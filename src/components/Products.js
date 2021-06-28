@@ -1,49 +1,22 @@
 import {active , increment} from '../store/Products-Reducer'
 import { connect } from 'react-redux'
 import React from 'react'
-import {
-    AppBar,
-    Card,
-    Container ,
-    Link,
-    makeStyles,
-    Grid,
-    Box,
-  } from '@material-ui/core/';
-import { CheckBox } from '@material-ui/icons';
-  const useStyles = makeStyles((theme) => ({
-    cardGrid: {
-      paddingTop: theme.spacing(8),
-      paddingBottom: theme.spacing(8),
-    },
-    card: {
-      height: '100%',
-      display: 'flex',
-      flexDirection: 'column',
-    },
-    cardMedia: {
-      paddingTop: '56.25%', // 16:9
-    },
-    cardContent: {
-      flexGrow: 1,
-    },
-  }));
+import {AppBar,Card,Container ,Link,makeStyles,Grid,Box,} from '@material-ui/core/';
+ 
 
 function Product (props){
-    const classes = useStyles();
 
     // console.log(props.product,'from product');
     if(props.test){
     return(
         <> 
-        <Container style={{ background: 'whitesmoke' }} 
-        className={classes.cardGrid} maxWidth="md">
+        <Container style={{ background: 'whitesmoke' }} >
             <Grid  container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
             {props.test.map((e,idx)=>{
 
                 return(
                 <>
-                <Card style={{ margin: '3%' }} className={classes.card}>
+                <Card style={{ margin: '3%' }}>
                 <Grid  Spacing={4}  item xs={6} >
                    
                     <img src={e.image} alt={e.name} width='400px'></img>
