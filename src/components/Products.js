@@ -1,31 +1,76 @@
 import {active , increment} from '../store/Products-Reducer'
 import { connect } from 'react-redux'
 import React from 'react'
-// {props.product.productSelected.map(e=>{
-//     if(props.active!==e.category)
-//     return(
-//       <>
-//         <h3>{e.name}</h3>
-//       </>
-//     )
-// })}
+import {
+    AppBar,
+    Card,
+    Container ,
+    Link,
+    makeStyles,
+    Grid,
+    Box,
+  } from '@material-ui/core/';
+import { CheckBox } from '@material-ui/icons';
+  const useStyles = makeStyles((theme) => ({
+    cardGrid: {
+      paddingTop: theme.spacing(8),
+      paddingBottom: theme.spacing(8),
+    },
+    card: {
+      height: '100%',
+      display: 'flex',
+      flexDirection: 'column',
+    },
+    cardMedia: {
+      paddingTop: '56.25%', // 16:9
+    },
+    cardContent: {
+      flexGrow: 1,
+    },
+  }));
 
 function Product (props){
-    console.log(props.product,'from product');
-    console.log(props.product.productSelected);
-    // return(<><h2>gg</h2></>)
+    const classes = useStyles();
+
+    // console.log(props.product,'from product');
     if(props.test){
     return(
         <> 
-    {console.log(props.test,';8/8/8')}
-    {props.test.map(e=>{
-  
-    return(
-      <>
-        <h3>{e.name}</h3>
-      </>
+        <Container style={{ background: 'whitesmoke' }} 
+        className={classes.cardGrid} maxWidth="md">
+            <Grid  container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
+            {props.test.map((e,idx)=>{
+
+                return(
+                <>
+                <Card style={{ margin: '3%' }} className={classes.card}>
+                <Grid  Spacing={4}  item xs={6} >
+                   
+                    <img src={e.image} alt={e.name} width='400px'></img>
+                    <h1>{e.name}</h1>
+                                <Grid
+                                container
+                                direction="row"
+                                justify="space-between"
+                                alignItems="center"
+                                Spacing={12}
+                                >
+                                <p >
+                                ADD TO CARD
+                                
+                                </p>
+                                <p variant="h6">
+                                DETAILS</p>
+                                </Grid>
+                </Grid>
+                </Card>
+
+       
+        </>
     )
 })}
+</Grid>
+</Container >
              
         
         </>
@@ -53,4 +98,5 @@ const mapDispatch={active , increment}
 
 //3. connect your component and export it after its connected to redux store
 export default connect(mapStateToProps , mapDispatch)(Product)// export default Product;
+
 

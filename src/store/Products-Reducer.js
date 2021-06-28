@@ -20,19 +20,19 @@ let initialState = {
         },
         {name:'Calzones' , 
         price: '20.3$', 
-        image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/22/3-Tasten-Maus_Microsoft.jpg/220px-3-Tasten-Maus_Microsoft.jpg', 
+        image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSvCV1nEn29DnjI4Yvdm1hca_eRNuW_OQmoXA&usqp=CAU', 
         inStock:500 ,
         category:'food'
         },
         {name:'Mouse' , 
-        price: '30.3$', 
-        image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSvCV1nEn29DnjI4Yvdm1hca_eRNuW_OQmoXA&usqp=CAU', 
+        price: '30.3$',
+        image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/22/3-Tasten-Maus_Microsoft.jpg/220px-3-Tasten-Maus_Microsoft.jpg',  
         inStock:163 ,
         category:'electronics'
         },
         {name:'Apple' , 
         price: '6.2$', 
-        image: 'http://blogs-images.forbes.com/bethhoffman/files/2012/04/Apple.jpg', 
+        image: 'https://ezsai.com/wp-content/uploads/2021/02/firefox_2018-07-10_07-50-11.png', 
         inStock:300 ,
         category:'food'
         }
