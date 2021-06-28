@@ -6,24 +6,15 @@ let initialState = {
 ,
     activeCategory:{}
 }
-
 const categories = (state=initialState , action)=>{
     let {type , payload} = action
     switch(type){
         case 'ACTIVE':
-            let activeCategory = initialState.categories.find(category=>category.name === payload);
-            // console.log({categories:initialState.categories,active});
-            return {categories:initialState.categories,activeCategory}
+            // let activeCategory = initialState.categories.find(category=>category.name === payload);
+            // console.log( initialState.categories ,payload,'==============99999999999');
+            return { categories: initialState.categories ,payload}
         default :
         return state
     }
 }
 export default categories;
-
-//action:trigger the reducer to change the active category
-export const active=(name)=>{
-    return{
-        type:'ACTIVE',
-        payload:name,
-    }
-}
