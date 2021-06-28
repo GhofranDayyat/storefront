@@ -1,7 +1,7 @@
 // import {AppBar , Toolbar , Button, IconButton ,MenuIcon ,Typography,classes} from '@material-ui/icons/@material-ui/icons/ShoppingCartOutlined'
 
 import {Button }from  '@material-ui/core/'
-import {active , increment} from '../store/Products-Reducer'
+import {active , increment} from '../store/action'
 import { connect } from 'react-redux'
 
 
