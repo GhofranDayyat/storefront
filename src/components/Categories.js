@@ -2,7 +2,11 @@ import React from 'react'
 import {connect} from 'react-redux'
 import {active} from '../store/action'
 import {Grid, Button ,Typography} from '@material-ui/core'
+
+
+
 function Category(props){
+    
     console.log(props);
     // console.log(props.Category.categories);
     return(
@@ -20,6 +24,8 @@ function Category(props){
        </>
         )
 }
+
+
 // 1- add the state to this component props
 const mapStateToProps = state => ({
     Category: state.categories.categories,

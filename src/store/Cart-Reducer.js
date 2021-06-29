@@ -9,7 +9,8 @@ let {type , payload} = action ;
 let count=state.count
 switch(type){
     case 'INCREMENT':
-        if(!state.display.includes(payload.name)){
+        if(!state.display.includes(payload.item)){
+            console.log(payload.item);
             state.display.push(payload.name)
             count = state.count+1
             // state.count=1

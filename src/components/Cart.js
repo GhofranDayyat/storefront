@@ -3,7 +3,7 @@ import {connect} from 'react-redux'
 import {increment} from '../store/action'
 import {Grid, Button ,Card} from '@material-ui/core'
 function Category(props){
-    console.log(props.count,'===========');
+    console.log(props.cartProd,'===========');
     // return(<h1>ggg</h1>)
     // console.log(props);
 if (props.cartProd.show) {
@@ -24,7 +24,7 @@ if (props.cartProd.show) {
 }
 // 1- add the state to this component props
 const mapStateToProps = state => ({
-    cartProd: state.cart,
+    cartProd: state.cart.count,
     count: state.products.products,
 });
 // 2- since I have some actions to use: 

@@ -22,7 +22,7 @@ import {
   import { CardHeader } from '@material-ui/core';
 
   function Header(props) {
-    console.log(props,'////////////');
+    console.log(props.totalCart,'////////////');
     return (
         <AppBar style={{ background: 'whitesmoke' }} position="static"  color="inherit">
         <Toolbar >
