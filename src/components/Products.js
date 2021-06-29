@@ -1,19 +1,23 @@
 import {active , increment, decrement } from '../store/action'
 import { connect } from 'react-redux'
 import React from 'react'
+
 import {AppBar,Card,Container ,Link,makeStyles,Grid,Box,Button} from '@material-ui/core/';
 function Product (props){
     console.log(props.productProps,'+++++++++++++++',props);
     if(props.productProps){
         return(
             <> 
+
         <Container style={{ background: 'whitesmoke' }} >
             <Grid  container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
             {props.productProps.map((e,idx)=>{
             // console.log(props,'from product');
                 return(
                 <>
+
                 <Card key={idx} style={{ margin: '3%' }}>
+
                 <Grid  Spacing={4}  item xs={6} >
                     <img src={e.image} alt={e.name} width='400px'></img>
                     <h1>{e.name}</h1>
