@@ -1,17 +1,31 @@
-import {active , increment, decrement } from '../store/action'
+import {active , increment, getRemotData ,updateRemotData } from '../store/action'
 import { connect } from 'react-redux'
-import React from 'react'
-
+import React ,{useEffect}from 'react'
 import {AppBar,Card,Container ,Link,makeStyles,Grid,Box,Button} from '@material-ui/core/';
+const api='https://api-server-0.herokuapp.com/products';
+
+
 function Product (props){
-    console.log(props.productProps,'+++++++++++++++',props);
-    if(props.productProps){
+
+    useEffect(()=>{
+        props.getRemotData(api)
+    } , [])
+    
+    console.log(props.productProps.initialState,'+++++++++++++++');
+    // return(
+    //     <>
+    //     <h1>hhhg</h1>
+    //     </>
+    // )
+
+    
+    if(props.productProps.initialState){
         return(
             <> 
 
         <Container style={{ background: 'whitesmoke' }} >
             <Grid  container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
-            {props.productProps.map((e,idx)=>{
+            {props.productProps.initialState.map((e,idx)=>{
             // console.log(props,'from product');
                 return(
                 <>
@@ -29,7 +43,7 @@ function Product (props){
                                 Spacing={12}
                                 >
                                 <Button 
-                                onClick={()=>{props.increment(e)
+                                onClick={()=>{props.updateRemotData(api,e)
                                     // console.log(props.increment(),e.inStock,'after product')
                                 }}
                                     >
@@ -38,7 +52,7 @@ function Product (props){
                                 <p variant="h6">
                                 DETAILS</p>
                                 </Grid>
-                                <p>In Stock {e.inStock}</p>
+                                <p>In Stock {e.inventory}</p>
                 </Grid>
                 </Card> 
             </>
@@ -46,7 +60,7 @@ function Product (props){
             })}
             </Grid>
             </Container >            
-        </>
+         </>
     )}else{
         return(
             <>
@@ -57,12 +71,12 @@ function Product (props){
 }
 // 1- add the state to this component props
 const mapStateToProps=state=>({
-    product:state.products, /// state.reducer name in combineReducer
-    // active:state.categories.active
-    productProps:state.products.productSelected
+    // product:state.products, /// state.reducer name in combineReducer
+
+    productProps:state.products
 })
 // 2- since I have some actions to use: 
 // add the actions to the component props
-const mapDispatch={active , increment}
+const mapDispatch={active , increment ,getRemotData ,updateRemotData}
 //3. connect your component and export it after its connected to redux store
 export default connect(mapStateToProps , mapDispatch)(Product)// export default Product;
