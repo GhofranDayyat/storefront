@@ -4,6 +4,7 @@ import React from 'react'
 
 import {AppBar,Card,Container ,Link,makeStyles,Grid,Box,Button} from '@material-ui/core/';
 function Product (props){
+    console.log(props.productProps,'+++++++++++++++',props);
     if(props.productProps){
         return(
             <> 

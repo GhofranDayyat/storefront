@@ -22,6 +22,7 @@ import {
   import { CardHeader } from '@material-ui/core';
 
   function Header(props) {
+    console.log(props,'////////////');
     return (
         <AppBar style={{ background: 'whitesmoke' }} position="static"  color="inherit">
         <Toolbar >
@@ -35,7 +36,7 @@ import {
             OUR STORE
           </IconButton>
           <Typography variant="h6" className={Menu.title}>
-              {`CART (${props.products.count})`}
+              {`CART (${props.totalCart})`}
           </Typography>
           </Grid>
         </Toolbar>
@@ -43,6 +44,6 @@ import {
     );
   }
 
-  const mapStateToProps = (state) => ({ products: state.products });
+  const mapStateToProps = (state) => ({ totalCart: state.cart.count });
   const mapDispatchToProps = { increment };
   export default connect(mapStateToProps, mapDispatchToProps)(Header);

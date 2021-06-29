@@ -12,7 +12,7 @@ if (props.cartProd.show) {
        { props.cartProd.display.map((e,idx)=>{
            return(
             <Card key={idx}>
-                {`${e} :${props.count.count||0}`}                  
+                {e}                  
             </Card>
            )
         })}
