@@ -11,17 +11,15 @@ function Product (props){
         props.getRemotData(api)
     } , [])
     
-    console.log(props.productProps.initialState,'+++++++++++++++');
     // return(
-    //     <>
-    //     <h1>hhhg</h1>
-    //     </>
-    // )
-
-    
-    if(props.productProps.initialState){
-        return(
-            <> 
+        //     <>
+        //     <h1>hhhg</h1>
+        //     </>
+        // )
+        console.log(props.productProps.initialState,'+++++++++++++++');
+        if(props.productProps.initialState){
+            return(
+                <> 
 
         <Container style={{ background: 'whitesmoke' }} >
             <Grid  container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
@@ -32,8 +30,8 @@ function Product (props){
 
                 <Card key={idx} style={{ margin: '3%' }}>
 
-                <Grid  Spacing={4}  item xs={6} >
-                    <img src={e.image} alt={e.name} width='400px'></img>
+                <Grid  spacing={4}  item xs={6} >
+                    <img src={e.image} alt={e.name} width='300px'></img>
                     <h1>{e.name}</h1>
                                 <Grid
                                 container

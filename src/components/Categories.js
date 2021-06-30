@@ -7,14 +7,19 @@ import {Grid, Button ,Typography} from '@material-ui/core'
 
 function Category(props){
     
-    console.log(props);
-    // console.log(props.Category.categories);
+    console.log(props,'()()())');
+// return(
+        //     <>
+        //     <h1>hhhg</h1>
+        //     </>
+        // )
+    // if (props.Category) {
     return(
         <>
        { props.Category.map((e,idx)=>{
            return(
             <Button key={idx}  
-            // variant="outlined"
+            variant="outlined"
             color="primary" 
             onClick={()=>props.active(e.name)} >
                 {e.display_name}                  
@@ -23,13 +28,27 @@ function Category(props){
         })}
        </>
         )
+    // }else{
+    //     console.log(props.x.payload,"2222222222222222");
+    //     return(
+    //         <>
+    //         <Button   
+    //         // variant="outlined"
+    //         color="primary" 
+    //         // onClick={()=>props.active(props.x.payload)}
+    //          >
+    //             {props.x.payload}                  
+    //         </Button>
+    //         </>
+    //     )
+    // }
 }
 
 
 // 1- add the state to this component props
 const mapStateToProps = state => ({
-    Category: state.categories.categories,
-    // x: state.activeCategory
+    Category:state.categories.categories,
+    // x: state.categories.categories
 });
 // 2- since I have some actions to use: 
 // add the actions to the component props

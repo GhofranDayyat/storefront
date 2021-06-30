@@ -1,8 +1,9 @@
 // import {AppBar , Toolbar , Button, IconButton ,MenuIcon ,Typography,classes} from '@material-ui/icons/@material-ui/icons/ShoppingCartOutlined'
 
 import {Button }from  '@material-ui/core/'
-import {active , increment} from '../store/action'
+import {active} from '../store/action'
 import { connect } from 'react-redux'
+import Categories from './Categories'
 
 
 import {
@@ -16,13 +17,17 @@ import {
   } from '@material-ui/core/';
 //   import {IconButton } from '@material-ui/icons'
 //   import { connect } from 'react-redux';
-//   import { increment } from '../store/Products-Reducer';
+  import { increment } from '../store/action';
   import ShoppingCartOutlinedIcon from '@material-ui/icons/ShoppingCartOutlined';
   import Menu from '@material-ui/core/Menu';
   import { CardHeader } from '@material-ui/core';
 
+
   function Header(props) {
-    console.log(props.totalCart,'////////////');
+  //   const test =()=>{
+  // console.log(props,'^^^^^^^66');
+  //   }
+    console.log(props,'////////////');
     return (
         <AppBar style={{ background: 'whitesmoke' }} position="static"  color="inherit">
         <Toolbar >
@@ -33,7 +38,15 @@ import {
           alignItems="center"
         >
           <IconButton edge="false" className={Menu.menuButton}  aria-label="menu">
+            <Link
+            href="#" onClick={()=>{
+              props.test.show=false
+            // console.log(props.test.show);
+            }}
+            > 
             OUR STORE
+            </Link>
+
           </IconButton>
           <Typography variant="h6" className={Menu.title}>
               {`CART (${props.totalCart})`}
@@ -44,6 +57,9 @@ import {
     );
   }
 
-  const mapStateToProps = (state) => ({ totalCart: state.cart.count });
-  const mapDispatchToProps = { increment };
+  const mapStateToProps = (state) => ({
+     totalCart: state.cart.count ,
+      // test: state.products
+    });
+  const mapDispatchToProps = { active };
   export default connect(mapStateToProps, mapDispatchToProps)(Header);

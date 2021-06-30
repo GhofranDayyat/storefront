@@ -8,31 +8,25 @@ export const active=(name)=>{
     }
 }
 export const increment =(el)=>{
+    console.log(el);
     return{
         type:'INCREMENT',
         payload:el
     }
 }
-export const decrement =(name)=>{
+export const decrement =(el)=>{
     return{
-        type:'DECREMENT',
-        payload: name
+        type:'deleteFromCart',
+        payload: el
     }
 }
 
 export const getRemotData=(api)=>(dispatch , state)=>{
 // 1 // get remot  data with superagent 
 // 2 // then dispatch an action with the response after we get it 
-// console.log(dispatch , 'dispatch');
-// console.log(state , 'state');
-
 
 return superagent.get(api).then(res=>{
-
-    // console.log(dispatch(getAction(res.body)));
     dispatch(getAction(res.body))
-    // getAction(res.body)
-    // dispatch(active(res.body));
 }).catch((e)=>{console.log('error' , e.message)})
 }
 
@@ -44,11 +38,22 @@ export const getAction = payload=>{
     }
 }
 
+export const getAfterUpdate = payload=>{
+
+    return{
+        type:'DECREMENT',
+        payload: payload
+    }
+}
+
+
 export const updateRemotData=(api, product)=>{
   return (dispatch)=>{
 console.log(dispatch);
-      return superagent.put(`${api}/${product._id}`).send({inventory:product.inventory-1}).then(()=>{
-          dispatch(increment(product))
+      return superagent.put(`${api}/${product._id}`).send({inventory:product.inventory-1}).then((res)=>{
+          return superagent.get(api).then(data=>{
+            dispatch(getAfterUpdate({allData: data.body ,updateProduct: res.body}))
+        })
         }).catch((e)=>{console.log('error' , e.message)})
   }
 }

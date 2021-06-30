@@ -6,22 +6,29 @@ let initialState={
 }
 const cart = (state = initialState , action)=>{
 let {type , payload} = action ;
-let count=state.count
 switch(type){
-    case 'INCREMENT':
-        if(!state.display.includes(payload.item)){
-            console.log(payload.item);
-            state.display.push(payload.name)
-            count = state.count+1
-            // state.count=1
+    case 'DECREMENT':
+        console.log(state.display, '_########33_',state.count ,payload.updateProduct.item);
+        if(!state.display.includes(payload.updateProduct.item)){
+            state.display.push(payload.updateProduct.item)
+            state.count = state.count+1
         }
-        // console.log(state);
-
     return { 
         list:[...state.list,payload],
         display:state.display,
         show:true,
-        count
+        count:state.count
+    };
+
+    case 'deleteFromCart':
+        const deletedArray =state.display.filter(pro=>pro!==payload)
+        state.count = state.count-1
+
+    return { 
+        list:[...state.list,payload],
+        display:deletedArray,
+        show:true,
+        count:state.count
     };
     default:
     return state;
